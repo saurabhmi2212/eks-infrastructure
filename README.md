@@ -1,3 +1,5 @@
+**Explanation:**
+
 
 The Terraform scripts create a VPC with public and private subnets, an internet gateway, and a security group for the EKS control plane.
 The EKS cluster is then created, associating it with the VPC, subnets, and security group.
