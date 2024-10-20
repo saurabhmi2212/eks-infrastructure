@@ -100,7 +100,6 @@ resource "aws_security_group" "eks_control_plane_sg" {
   }
 }
 
-# Create EKS cluster
 resource "aws_eks_cluster" "eks" {
   name = "my-eks-cluster"
   vpc_config {
@@ -113,6 +112,22 @@ resource "aws_eks_cluster" "eks" {
     ]
     security_group_ids = [
       aws_security_group.eks_control_plane_sg.id
+    ]
+  }
+  cluster_config {
+    version = "1.24" # Replace with your desired EKS version
+    node_group_configs = [
+      {
+        node_group_name = "default-node-group"
+        desired_size = 2
+        min_size = 1
+        max_size = 5
+        ami_type = "AL2"
+        labels = {
+          "eks.amazonaws.com/nodegroup" = "default"
+        }
+        node_group_capacity_type = "ON_DEMAND"
+      }
     ]
   }
 }
