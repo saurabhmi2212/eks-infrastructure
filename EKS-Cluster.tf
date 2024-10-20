@@ -1,6 +1,6 @@
 # Configure AWS credentials and region
 provider "aws" {
-  region = "us-east-1" # Replace with your desired region
+  region = "us-east-1" # Replace with  desired region
 }
 
 # Create VPC
@@ -115,7 +115,7 @@ resource "aws_eks_cluster" "eks" {
     ]
   }
   cluster_config {
-    version = "1.24" # Replace with your desired EKS version
+    version = "1.24" # Replace with  desired EKS version
     node_group_configs = [
       {
         node_group_name = "default-node-group"
